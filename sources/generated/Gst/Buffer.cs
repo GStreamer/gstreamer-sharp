@@ -580,15 +580,6 @@ namespace Gst {
 			Marshal.FreeHGlobal (native_parms);
 		}
 
-		[DllImport("libgstreamer-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		static extern IntPtr gst_buffer_new_wrapped(byte[] data, UIntPtr n_length);
-
-		public Buffer (byte[] data) 
-		{
-			Raw = gst_buffer_new_wrapped(data, new UIntPtr ((ulong) (data == null ? 0 : data.Length)));
-		}
-
-		[DllImport("libgstreamer-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern IntPtr gst_buffer_new_wrapped_bytes(IntPtr bytes);
 
 		public Buffer (GLib.Bytes bytes) 
